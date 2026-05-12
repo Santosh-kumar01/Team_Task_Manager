@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 249, 250, 251;
+  --background-end-rgb: 249, 250, 251;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(249, 250, 251, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(199, 210, 254, 0.8);
+  border-radius: 10px;
+  border: 2px solid rgba(249, 250, 251, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(165, 180, 252, 1);
+}
+
+/* Custom Text Selection */
+::selection {
+  background: rgba(165, 180, 252, 0.4);
+  color: rgb(31, 41, 55);
+}
