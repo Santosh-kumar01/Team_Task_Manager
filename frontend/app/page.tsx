@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CheckCircle2, LayoutDashboard, Users, Zap, Shield, BarChart3, Clock } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -63,7 +64,13 @@ export default function LandingPage() {
                 <div className="flex -space-x-3">
                   {[1,2,3,4].map(i => (
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
-                      <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
+                      <Image 
+                        src={`https://i.pravatar.cc/100?img=${i+10}`} 
+                        alt="User" 
+                        width={40} 
+                        height={40}
+                        className="object-cover"
+                      />
                     </div>
                   ))}
                 </div>
@@ -169,7 +176,7 @@ export default function LandingPage() {
             
             <div className="relative z-10 space-y-6">
               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
-                Ready to transform <br className="hidden md:block" /> your team's workflow?
+                Ready to transform <br className="hidden md:block" /> your team&apos;s workflow?
               </h2>
               <p className="text-xl text-indigo-100/70 font-medium max-w-2xl mx-auto leading-relaxed">
                 Join thousands of high-performing teams who use TaskFlow to turn chaos into clarity.

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createProject } from '../../../store/projectSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/store';
+import { createProject } from '../../../store/appSlice';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Rocket, FolderPlus, AlignLeft, ArrowUpRight } from 'lucide-react';
@@ -9,9 +9,9 @@ import { ArrowLeft, Rocket, FolderPlus, AlignLeft, ArrowUpRight } from 'lucide-r
 export default function NewProject() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const { loading, error } = useSelector((state) => state.projects);
+  const { loading, error } = useAppSelector((state) => state.app.projects);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,7 +91,7 @@ export default function NewProject() {
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  rows="4"
+                  rows={4}
                   className="w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-200/80 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 hover:bg-white hover:shadow-[0_0_15px_rgba(79,70,229,0.1)] transition-all text-gray-800 font-bold resize-none placeholder-gray-400"
                   placeholder="What is this project about?"
                 ></textarea>

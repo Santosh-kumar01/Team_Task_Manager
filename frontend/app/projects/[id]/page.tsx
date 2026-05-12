@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTasks, createTask } from '../../../store/taskSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/store';
+import { fetchAppData, createTask } from '../../../store/appSlice';
 import api from '../../../lib/axios';
 import TaskCard from '../../../components/TaskCard';
 import Link from 'next/link';
@@ -11,9 +11,9 @@ export default function ProjectDetails({ params }) {
   const [project, setProject] = useState(null);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [isCreating, setIsCreating] = useState(false);
-  const { list: tasks, loading } = useSelector((state) => state.tasks);
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const { list: tasks, loading } = useAppSelector((state) => state.app.tasks);
+  const { user } = useAppSelector((state) => state.app.auth);
+  const dispatch = useAppDispatch();
 
   // Calculate Progress
   const projectTasks = tasks.filter(t => t.project?._id === params.id || t.project === params.id);
@@ -31,7 +31,7 @@ export default function ProjectDetails({ params }) {
       }
     };
     fetchProject();
-    dispatch(fetchTasks(params.id));
+    dispatch(fetchAppData(undefined));
   }, [params.id, dispatch]);
 
   const handleCreateTask = async (e) => {
